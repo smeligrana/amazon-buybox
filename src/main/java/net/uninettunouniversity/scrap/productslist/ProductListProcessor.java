@@ -37,7 +37,7 @@ public class ProductListProcessor {
 		prodotti.forEach((p)->{
 			logger.info(p.toString());
 			
-			BrowsingMessage message = new BrowsingMessage(p.getUrl(), p.getId_folder_experiment());
+			BrowsingMessage message = new BrowsingMessage(p);
 			this.template.send("browsing", message);
 		});
 		

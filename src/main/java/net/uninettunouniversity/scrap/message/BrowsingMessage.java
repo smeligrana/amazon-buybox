@@ -1,37 +1,24 @@
 package net.uninettunouniversity.scrap.message;
 
+import net.uninettunouniversity.scrap.dto.Esperimento;
+
 public class BrowsingMessage {
-	private String url;
-	private String folderid;
+	private Esperimento esperimento;
 
 	public BrowsingMessage() {
 	}
 
-	public BrowsingMessage(String url, String folderid) {
+	public BrowsingMessage(Esperimento esperimento) {
 		super();
-		this.url = url;
-		this.folderid = folderid;
+		this.esperimento = esperimento;
 	}
 
-	public String getUrl() {
-		return url;
+	public Esperimento getEsperimento() {
+		return esperimento;
 	}
 
-	public String getFolderid() {
-		return folderid;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public void setFolderid(String folderid) {
-		this.folderid = folderid;
-	}
-
-	@Override
-	public String toString() {
-		return "BrowsingMessage [url=" + url + ", folderid=" + folderid + "]";
+	public void setEsperimento(Esperimento esperimento) {
+		this.esperimento = esperimento;
 	}
 
 }
