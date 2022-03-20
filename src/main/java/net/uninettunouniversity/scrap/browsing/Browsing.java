@@ -9,6 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Browsing {
 	
@@ -76,8 +77,16 @@ public class Browsing {
 	}
 	
 	private void inizializzaDriver() {
-		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
-		driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver");
+		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("start-maximized"); // open Browser in maximized mode
+//		options.addArguments("disable-infobars"); // disabling infobars
+//		options.addArguments("--disable-extensions"); // disabling extensions
+//		options.addArguments("--disable-gpu"); // applicable to windows os only
+//		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+		options.addArguments("--no-sandbox"); // Bypass OS security model
+		options.addArguments("--headless");
+		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
@@ -88,5 +97,10 @@ public class Browsing {
 
 	public WebDriver getDriver() {
 		return this.driver;
+	}
+	
+	public static void main(String...args) {
+		Browsing browsing = new Browsing();
+		browsing.espandiPagina("https://www.google.com");
 	}
 }

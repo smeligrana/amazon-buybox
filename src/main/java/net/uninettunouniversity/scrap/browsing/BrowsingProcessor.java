@@ -52,7 +52,7 @@ public class BrowsingProcessor {
 
 		browsing.getDriver().close();
 
-		ExtractingMessage message = new ExtractingMessage("id html", "id sheet");
+		ExtractingMessage message = new ExtractingMessage(in.getEsperimento());
 		this.template.send("extracting", message);
 	}
 

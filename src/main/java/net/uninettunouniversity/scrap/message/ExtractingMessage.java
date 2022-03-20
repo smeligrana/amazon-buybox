@@ -1,38 +1,25 @@
 package net.uninettunouniversity.scrap.message;
 
+import net.uninettunouniversity.scrap.dto.Esperimento;
+
 public class ExtractingMessage {
-	private String htmlId;
-	private String sheetId;
+	private Esperimento esperimento;
 
 	public ExtractingMessage() {
 		super();
 	}
 
-	public ExtractingMessage(String htmlId, String sheetId) {
+	public ExtractingMessage(Esperimento esperimento) {
 		super();
-		this.htmlId = htmlId;
-		this.sheetId = sheetId;
+		this.esperimento = esperimento;
 	}
 
-	public String getHtmlId() {
-		return htmlId;
+	public Esperimento getEsperimento() {
+		return esperimento;
 	}
 
-	public void setHtmlId(String htmlId) {
-		this.htmlId = htmlId;
+	public void setEsperimento(Esperimento esperimento) {
+		this.esperimento = esperimento;
 	}
 
-	public String getSheetId() {
-		return sheetId;
-	}
-
-	public void setSheetId(String sheetId) {
-		this.sheetId = sheetId;
-	}
-
-	@Override
-	public String toString() {
-		return "ExtractingMessage [htmlId=" + htmlId + ", sheetId=" + sheetId + "]";
-	}
-	
 }
