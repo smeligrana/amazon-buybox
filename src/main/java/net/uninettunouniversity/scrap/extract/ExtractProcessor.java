@@ -33,10 +33,14 @@ public class ExtractProcessor {
 		DataExtractor dataExtractor = new DataExtractor();
 		LinkedList<OpzioneProdotto> elencoOpzioneProdotto = dataExtractor.eseguiScrap(in.getEsperimento(), in.getDataEstrazione());
 		
+		this.logger.info("Trovati "+elencoOpzioneProdotto.size()+" opzioneProdotto");
+		
 		SheetsOperation shOp= new SheetsOperation();
 		AppendValuesResponse r = shOp.salvaSuFoglioGoogle(elencoOpzioneProdotto, in.getDataEstrazione(), in.getEsperimento().getId_sheet_extracted_data(),
 				"Foglio1!A:AF");
 
 		this.logger.info("Aggiunti dati al foglio");
+		this.logger.info(r.getSpreadsheetId());
+		this.logger.info(r.getTableRange());
 	}
 }

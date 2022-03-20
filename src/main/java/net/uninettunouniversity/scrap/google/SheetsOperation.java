@@ -46,7 +46,8 @@ public class SheetsOperation extends GoogleOperationAbstract {
 		values = _values;
 		ValueRange body = new ValueRange().setValues(values);
 		UpdateValuesResponse result = service.spreadsheets().values().update(spreadsheetId, range, body)
-				.setValueInputOption(valueInputOption).execute();
+				.setValueInputOption(valueInputOption)
+				.execute();
 		return result;
 	}
 

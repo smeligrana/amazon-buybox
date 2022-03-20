@@ -56,7 +56,7 @@ public class DataExtractor {
 		dataAcquisizione = dataEstrazione;
 		List<com.google.api.services.drive.model.File> lf = drOp.listFiles(esp.getId_folder_html());
 		// primo file da esaminare
-		logger.info("dataEstrazione = "+dataEstrazione);;
+		logger.info("dataEstrazione = "+dataEstrazione);
 		com.google.api.services.drive.model.File f = estraiFile(dataEstrazione, lf);
 
 		Scanner s = new Scanner(drOp.getContentFile(f));
@@ -86,6 +86,7 @@ public class DataExtractor {
 //			
 //		}
 		int numVend = getNumVenditori();
+		logger.info("trovati  = "+numVend+ " veditori");;
 
 		LinkedList<OpzioneProdotto> elencoOpzioni = catturaValori(numVend, dataAcquisizione);
 
@@ -248,6 +249,7 @@ public class DataExtractor {
 			logger.info("filename = "+fl.getName());
 			if(fl.getName().contains(data)) {
 				f = fl;
+				break;
 			}
 		}
 		return f;
