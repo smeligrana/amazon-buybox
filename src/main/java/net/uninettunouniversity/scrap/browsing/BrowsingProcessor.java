@@ -45,6 +45,7 @@ public class BrowsingProcessor {
 
 		String html = browsing.getHtml();
 		String dataCompatta = DateFormatUtils.format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
+		dataCompatta = dataCompatta.replace(" ", "").replace("\'", "").replace(":", "");
 		caricaFileHtml(in.getEsperimento().getNome(), in.getEsperimento().getId_folder_html(), html, dataCompatta,
 				driveOperation);
 		caricaFileScreenShot(in.getEsperimento().getNome(), in.getEsperimento().getId_folder_img(), dataCompatta,
@@ -52,7 +53,7 @@ public class BrowsingProcessor {
 
 		browsing.getDriver().close();
 
-		ExtractingMessage message = new ExtractingMessage(in.getEsperimento());
+		ExtractingMessage message = new ExtractingMessage(in.getEsperimento(), dataCompatta);
 		this.template.send("extracting", message);
 	}
 

@@ -1,5 +1,8 @@
 package net.uninettunouniversity.scrap.extract;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -17,11 +20,13 @@ public class ExtractProcessor {
 //	private KafkaTemplate<Object, Object> template;
 
 	@KafkaListener(id = "extracting", topics = "extracting", concurrency = "1")
-	public void listen(ExtractingMessage in, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+	public void listen(ExtractingMessage in, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic)
+			throws GeneralSecurityException, IOException {
 
 		this.logger.info("Received: {} from {} ", in, topic);
-		
-		// TODO Per ogni html ricevuto estraggo i dati e li salvo nello sheet specifico
-		
+
+		DataExtractor dataExtractor = new DataExtractor();
+		dataExtractor.eseguiScrap(in.getEsperimento(), in.getDataEstrazione());
+
 	}
 }

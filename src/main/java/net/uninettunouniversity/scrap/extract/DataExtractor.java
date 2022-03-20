@@ -25,12 +25,17 @@ import org.jsoup.select.Elements;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import net.uninettunouniversity.scrap.browsing.BrowsingProcessor;
 import net.uninettunouniversity.scrap.dto.Esperimento;
 import net.uninettunouniversity.scrap.dto.OpzioneProdotto;
 import net.uninettunouniversity.scrap.google.DriveOperation;
 
 public class DataExtractor {
+	
+	private final Logger logger = LoggerFactory.getLogger(DataExtractor.class);
 
 	private XPathRetriever xpathRetr;
 	private HashMap<String, String> xpath;
@@ -51,6 +56,7 @@ public class DataExtractor {
 		dataAcquisizione = dataEstrazione;
 		List<com.google.api.services.drive.model.File> lf = drOp.listFiles(esp.getId_folder_html());
 		// primo file da esaminare
+		logger.info("dataEstrazione = "+dataEstrazione);;
 		com.google.api.services.drive.model.File f = estraiFile(dataEstrazione, lf);
 
 		Scanner s = new Scanner(drOp.getContentFile(f));
@@ -236,7 +242,11 @@ public class DataExtractor {
 			List<com.google.api.services.drive.model.File> lf) {
 		com.google.api.services.drive.model.File f = null;
 		for (com.google.api.services.drive.model.File fl : lf) {
-			if (fl.getName().substring(fl.getName().length() - 18, fl.getName().length() - 5).equalsIgnoreCase(data)) {
+//			if (fl.getName().substring(fl.getName().length() - 18, fl.getName().length() - 5).equalsIgnoreCase(data)) {
+//				f = fl;
+//			}
+			logger.info("filename = "+fl.getName());
+			if(fl.getName().contains(data)) {
 				f = fl;
 			}
 		}
