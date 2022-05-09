@@ -32,7 +32,7 @@ public class ProductListProcessor {
 
 		URLRetriever urlRetriever;
 		urlRetriever = new URLRetriever();
-		List<Esperimento> prodotti = urlRetriever.leggiFileConfig("1W8UeooEtPwf3tykbbfe0JPIiu6UsNQz1Qic1hn2IVL8");
+		List<Esperimento> prodotti = urlRetriever.leggiFileConfig(in);
 
 		prodotti.forEach((p)->{
 			logger.info(p.toString());
