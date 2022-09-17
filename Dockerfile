@@ -7,11 +7,8 @@ WORKDIR /app
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/Rome"
 RUN apt update
 RUN apt-get install wget openjdk-11-jdk fonts-liberation libcairo2 libcurl3-gnutls libgbm1 libgtk-3-0 xdg-utils -y
-#RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#RUN dpkg -i google-chrome-stable_current_amd64.deb
 RUN wget -q http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_99.0.4844.74-1_amd64.deb
 RUN dpkg -i google-chrome-stable_99.0.4844.74-1_amd64.deb
-#RUN apt -f install -y
 
 
 RUN mkdir -p /app/
@@ -27,6 +24,6 @@ COPY Driver/ /app/Driver/
 RUN mkdir -p /app/html
 RUN mkdir -p /app/img
 
-CMD chmod 777 /app/mvnw
+RUN chmod 777 /app/mvnw
 
-#ENTRYPOINT ./mvnw clean spring-boot:run
+ENTRYPOINT ./mvnw clean spring-boot:run

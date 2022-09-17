@@ -68,23 +68,7 @@ public class DataExtractor {
 		String html = html_.toString();
 		// trasforma in oggetto Document
 		document = Jsoup.parse(html);
-//		}else {//Esperimento in diretta
-//			dataAcquisizione = dataEstrazione.substring(0, dataEstrazione.length() - 6);
-//			Browsing br = new Browsing();
-//			br.espandiPagina(esp.getUrl());
-//			// estrai html
-//			String html = br.getHtml();
-//			String dataCompatta = dataEstrazione.substring(0, dataEstrazione.length() - 6);
-//			// salva html
-//			caricaFileHtml(esp.getNome(), esp.getId_folder_html(), html, dataCompatta);
-//			// salva screenshot
-//			caricaFileScreenShot(esp.getNome(), esp.getId_folder_img(), dataCompatta, br.getDriver());
-//			// chiudiamo il browser
-//			br.getDriver().close();
-//			// trasforma in oggetto Document
-//			document = Jsoup.parse(html);
-//			
-//		}
+
 		int numVend = getNumVenditori();
 		logger.info("trovati  = "+numVend+ " veditori");;
 

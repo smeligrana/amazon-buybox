@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import java.security.GeneralSecurityException;
 import java.util.Date;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
