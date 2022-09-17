@@ -21,7 +21,7 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
 
-public class GoogleOperationAbstract {
+public abstract class GoogleOperationAbstract {
 	protected static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";
 	protected static final String CREDENTIALS_FILE_PATH = "/resouces/credentials.json";
 	protected static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();

@@ -29,4 +29,4 @@ RUN mkdir -p /app/img
 
 CMD chmod 777 /app/mvnw
 
-ENTRYPOINT ./mvnw clean spring-boot:run
+#ENTRYPOINT ./mvnw clean spring-boot:run
