@@ -66,6 +66,7 @@ public class DataExtractor {
 		}
 		s.close();
 		String html = html_.toString();
+		
 		// trasforma in oggetto Document
 		document = Jsoup.parse(html);
 

@@ -7,17 +7,17 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.stereotype.Component;
 
 import net.uninettunouniversity.scrap.dto.Esperimento;
 import net.uninettunouniversity.scrap.google.URLRetriever;
 import net.uninettunouniversity.scrap.message.BrowsingMessage;
 
-@Configuration
+@Component
 public class ProductListProcessor {
 	private final Logger logger = LoggerFactory.getLogger(ProductListProcessor.class);
 
@@ -30,8 +30,7 @@ public class ProductListProcessor {
 
 		this.logger.info("Received: {} from {} ", in, topic);
 
-		URLRetriever urlRetriever;
-		urlRetriever = new URLRetriever();
+		URLRetriever urlRetriever = new URLRetriever();
 		List<Esperimento> prodotti = urlRetriever.leggiFileConfig(in);
 
 		prodotti.forEach((p)->{

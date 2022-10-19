@@ -32,12 +32,6 @@ public class Browsing {
 		// apre finestra altri venditori
 		driver.findElement(By.xpath("//*[@id=\"olpLinkWidget_feature_div\"]/div[2]/span/a/div/div")).click();
 
-		// apre opzione "mostra altro"
-		// try {
-		// driver.findElement(By.xpath("//*[@id=\"aod-pinned-offer-show-more-link\"]")).click();
-		// } catch (NoSuchElementException e) {
-
-		// }
 
 		// contatore venditori
 		String cont = driver.findElement(By.xpath("//*[@id=\"aod-filter-offer-count-string\"]")).getText();
@@ -79,12 +73,8 @@ public class Browsing {
 	private void inizializzaDriver() {
 		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver");
 		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("start-maximized"); // open Browser in maximized mode
-//		options.addArguments("disable-infobars"); // disabling infobars
-//		options.addArguments("--disable-extensions"); // disabling extensions
-//		options.addArguments("--disable-gpu"); // applicable to windows os only
-		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-		options.addArguments("--no-sandbox"); // Bypass OS security model
+		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--no-sandbox");
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
